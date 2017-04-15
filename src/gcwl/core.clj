@@ -1,6 +1,7 @@
-(ns gcwl.core)
+(ns gcwl.core
+  (:require [gcwl.config   :as configs]
+            [gcwl.irc      :as irc]
+            [cheshire.core :as json]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(defn run []
+  (println "[*] Starting gcwl"))
