@@ -2,6 +2,6 @@
   (:require [clojure.test :refer :all]
             [gcwl.core :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest some-foo-test
+  (testing "Make sure test suite works"
+    (is (= 1 1))))
