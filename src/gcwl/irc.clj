@@ -1,7 +1,7 @@
 ;; Filename: irc.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 04/16/2017 Sunday 09:34:58
+;; Last-Updated: 04/16/2017 Sunday 10:01:08
 ;; Description: Irc network related funtions
 
 (ns gcwl.irc
@@ -19,7 +19,7 @@
    with io pipes"
   (let [socket (Socket. host port)]
     {:socket socket
-     :in (io/reader socket)
+     :in  (io/reader socket)
      :out (io/writer socket)}))
 
 (defn write-data [irc-connection & raw-msg]
@@ -28,8 +28,9 @@
    with a space."
   (let [to-server (:in irc-connection)
         s (string/join " " raw-msg)]
-    (.print to-server (format "%s\r\n" s))
-    (.flush to-server)))
+    (binding [*out* (:out irc-connection)]
+      (println s))))
+
 
 (defn connect-to-irc [host port]
   "Make a connection to an IRC server and
