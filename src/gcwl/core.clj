@@ -1,5 +1,12 @@
+;; Filename: core.clj
+;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
+;; 
+;; Last-Updated: 04/16/2017 Sunday 09:27:28
+;; Description: Main namespace of the program
+
 (ns gcwl.core
-  (:require [gcwl.config   :as configs]
+  "Main namespace of the program"
+  (:require [gcwl.config   :as config]
             [gcwl.irc      :as irc]
             [cheshire.core :as json]))
 
