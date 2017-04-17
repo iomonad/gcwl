@@ -1,7 +1,7 @@
 ;; Filename: bot.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 04/17/2017 Monday 20:30:45
+;; Last-Updated: 04/17/2017 Monday 21:08:36
 ;; Description: Bot related function
 
 (ns gcwl.bot
@@ -48,14 +48,15 @@
                         :pass server-password
                         :callbacks {:privmsg (server-callback plugins)
                                     :raw-log irclj.events/stdout-callback}))
+  (println (format "[*] Connecting as %s@%s" nick host))
   (when password (irc/identify bot password)) ; Auth if defined
   (dosync
-   (alter bot assoc
+   (alter bot assoc ; Add other options to bot connection
           :prefixes {}
           :ssl? true
           :plugins plugins)
    (doseq [c channels]
-     (irc/join c)) ; Join each channels
+     (irc/join bot c)) ; Join each channels
    ))
 
 
@@ -64,9 +65,11 @@
   (let [nick "gcwl"
         host "irc.freenode.net"
         port 6667
-        channels "#bot-test"]
+        channels (-> (str "#bot-test")
+                     (.split ",") ; Pass each chan to vec
+                     vec)]
     (run-bot plugins
              :host host
-             :port 6667
+             :port port
              :nick nick
              :channels channels)))
