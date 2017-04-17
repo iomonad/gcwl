@@ -1,4 +1,4 @@
 * Tasks
-** TODO [#n] Make proper irc connection
+** DONE [#n] Make proper irc connection
 ** TODO [#n] Writing message and argument parsing method
 ** TODO [#n] Make sweet plugin dsl
