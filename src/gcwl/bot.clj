@@ -1,7 +1,7 @@
 ;; Filename: bot.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 04/16/2017 Sunday 23:57:48
+;; Last-Updated: 04/17/2017 Monday 20:30:45
 ;; Description: Bot related function
 
 (ns gcwl.bot
@@ -59,7 +59,7 @@
    ))
 
 
-(defn star-bot [plugins]
+(defn start-bot [plugins]
   "Start the bot instance"
   (let [nick "gcwl"
         host "irc.freenode.net"
