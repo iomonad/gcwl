@@ -1,15 +1,15 @@
 (ns gcwl.plugins.echo
-  (:require [gcwl.parse     :refer [extract-args]]
+  (:require [gcwl.parse     :refer [extract-word handleerr]]
             [clojure.string :as string]))
 
 (defn return-echo [irc message]
-  (if-let [[arg _] (extract-args message)]
-    (let [arg1 (-> message :text first)]
-      (try
-        (str (format "Your parameter is %s." arg1)) 
-        (catch Exception e
-          (str "Error: %s" e)
-          )))
+  "Small POC to extract first argument"
+  (if-let [[arg1 _] (extract-word message)]
+    (try
+      (str (format "You say %s" arg1))
+      (catch Exception e
+        (handleerr e)
+        ))
     ))
 
-(def plugin {:commands { "echo" return-echo }})
+(def plugin {:commands { "echo" return-echo}})
