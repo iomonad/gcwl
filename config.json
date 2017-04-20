@@ -1,7 +1,6 @@
 {
     "server": "irc.freenode.net",
-    "port": 6667
+    "port": 6667,
     "nick": "gcwl",
-    "channels": "#bot-tes
-t"
+    "channels": "#bot-test"
 }
