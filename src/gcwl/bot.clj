@@ -1,16 +1,15 @@
 ;; Filename: bot.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 04/21/2017 Friday 23:12:44
+;; Last-Updated: 04/21/2017 Friday 23:56:59
 ;; Description: Bot related function
 
 (ns gcwl.bot
   (:require [irclj.core     :as irc]
             [irclj.events   :as events]
             [gcwl.parse     :refer [extract-command]]
-            [clojure.string :as string]))
-
-(def admin (atom [])) ;; Registred users
+            [clojure.string :as string])
+  (:gen-class))
 
 (defn choose-handler [plugins name]
   "Small function for handler selection"

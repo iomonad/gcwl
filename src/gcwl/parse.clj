@@ -1,12 +1,17 @@
+
 ;; Filename: parse.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 04/21/2017 Friday 23:27:04
+;; Last-Updated: 04/21/2017 Friday 23:59:40
 ;; Description: Parsing utils
 
 (ns gcwl.parse)
 
-(def admin (atom [])) ;; Registred users
+(def ^:private admin (atom [])) ;; Registred users
+
+(defn push-admin [nick]
+  "Add user to admin atom"
+  (swap! @admin conj nick))
 
 (defn admin? [nick]
   "Predicate to check if user is administrator"
