@@ -1,7 +1,7 @@
 ;; Filename: plugins.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 04/21/2017 Friday 23:25:32
+;; Last-Updated: 04/22/2017 Saturday 22:00:40
 ;; Description: Plugins dsl to build commands
 
 (ns gcwl.plugins
@@ -10,7 +10,8 @@
             [gcwl.plugins.echo :as echo]
             [gcwl.plugins.auth :as auth]
             [gcwl.plugins.about :as about]
-            [gcwl.plugins.testauth :as testauth]))
+            [gcwl.plugins.testauth :as testauth]
+            [gcwl.plugins.kernel :as kernel]))
 
 (defmacro defplugin [cmd & fn]
   "Macro to create a plugin"
@@ -22,7 +23,8 @@
                             echo/plugin
                             auth/plugin
                             about/plugin
-                            testauth/plugin]))
+                            testauth/plugin
+                            kernel/plugin]))
 
 (defn list-plugins []
   "List enabled plugins to *out*"
