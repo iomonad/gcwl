@@ -7,6 +7,6 @@
                  [irclj "0.5.0-alpha4"]
                  [cheshire "5.7.0"]
                  [enlive "1.1.6"]
-                 [clj-http "3.5.0"]]
+                 [http-kit "2.1.18"]]
   :aot  [gcwl.core]
   :main gcwl.core/run)
