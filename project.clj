@@ -8,5 +8,5 @@
                  [cheshire "5.7.0"]
                  [enlive "1.1.6"]
                  [http-kit "2.1.18"]]
-  :aot  [gcwl.core]
-  :main gcwl.core/run)
+  :main ^:skip-aot gcwl.core
+  :profiles {:uberjar {:aot [gcwl.core]}})

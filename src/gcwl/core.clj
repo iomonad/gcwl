@@ -1,7 +1,7 @@
 ;; Filename: core.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 04/20/2017 Thursday 21:35:54
+;; Last-Updated: 04/23/2017 Sunday 12:17:23
 ;; Description: Main namespace of the program
 
 
@@ -13,6 +13,6 @@
             )
   (:gen-class))
 
-(defn run []
+(defn -main []
   (println "[*] Starting bot")
   (bot/start-bot @plugins/plugins-enabled))
