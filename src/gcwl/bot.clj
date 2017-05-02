@@ -1,7 +1,7 @@
 ;; Filename: bot.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 04/21/2017 Friday 23:56:59
+;; Last-Updated: 05/02/2017 Tuesday 22:03:43
 ;; Description: Bot related function
 
 (ns gcwl.bot
@@ -61,9 +61,9 @@
 (defn start-bot [plugins]
   "Start the bot instance"
   (let [nick "gcwl"
-        host "irc.freenode.net"
+        host "irc.rizon.net"
         port 6667
-        channels (-> (str "#bot-test,#test")
+        channels (-> (str "#rice,#code")
                      (.split ",") ; Pass each chan to vec
                      vec)]
     (run-bot plugins
