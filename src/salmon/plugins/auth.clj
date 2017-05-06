@@ -1,11 +1,11 @@
 ;; Filename: auth.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/06/2017 Saturday 22:08:53
+;; Last-Updated: 05/06/2017 Saturday 23:01:17
 ;; Description: Auth user to admin atom
 
 (ns salmon.plugins.auth
-  (:require [salmon.parse     :refer [extract-word handleerr admin? push-admin]]
+  (:require [salmon.parse     :refer [extract-word handleerr admin? push-admin argerr]]
             [clojure.string :as string]))
 
 (def ^:dynamic *pass* "woot")

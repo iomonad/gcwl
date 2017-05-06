@@ -1,7 +1,7 @@
 ;; Filename: bot.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/06/2017 Saturday 22:05:24
+;; Last-Updated: 05/06/2017 Saturday 23:25:21
 ;; Description: Bot related function
 
 (ns salmon.bot
@@ -60,14 +60,21 @@
 
 (defn start-bot [plugins]
   "Start the bot instance"
-  (let [nick "salmon"
-        host "irc.freenode.net"
-        port 6667
-        channels (-> (str "#bottest,#testing")
-                     (.split ",") ; Pass each chan to vec
-                     vec)]
+  (let [config (or (read-string (slurp "resources/config.clj"))
+                   nil)
+        nick (or (get config :nick)
+                 "fake-salmon")
+        pass (or (get config :pass)
+                 "fake-password")
+        host (or (get-in config [:server :host])
+                 "irc.freenode.net")
+        port (or (get-in config [:server :port])
+                 6667)
+        channels (or (get-in config [:server :channels])
+                     ["#bottest"])]
     (run-bot plugins
              :host host
              :port port
              :nick nick
+             :password pass
              :channels channels)))

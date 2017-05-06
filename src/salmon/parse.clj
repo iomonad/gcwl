@@ -2,7 +2,7 @@
 ;; Filename: parse.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/06/2017 Saturday 22:06:05
+;; Last-Updated: 05/06/2017 Saturday 22:56:11
 ;; Description: Parsing utils
 
 (ns salmon.parse)
@@ -21,6 +21,10 @@
 (defn handleerr [error]
   "Just avoiding formating usage"
   (str (format "Error: %s" error)))
+
+(defn argerr [num]
+  "Pass number of missing arguments"
+  (str (format "Error: %s argument(s) requiered.")))
 
 (defn extract-command [message]
   "Extract command from raw message"
