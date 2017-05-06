@@ -1,3 +1,5 @@
 language: clojure
 services:
   - mongodb
+after_script:
+  - bash -ex test/coveralls.sh
