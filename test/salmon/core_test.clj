@@ -1,6 +1,6 @@
-(ns gcwl.core-test
+(ns salmon.core-test
   (:require [clojure.test :refer :all]
-            [gcwl.parse :as parse]))
+            [salmon.parse :as parse]))
 
 (deftest some-foo-test
   (testing "Make sure test suite works"
