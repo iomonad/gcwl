@@ -1,5 +1,5 @@
-(ns gcwl.plugins.date
-  (:require [gcwl.parse :refer :all]))
+(ns salmon.plugins.date
+  (:require [salmon.parse :refer :all]))
 
 (defn return-date [irc message]
   (let [date (new java.util.Date)]

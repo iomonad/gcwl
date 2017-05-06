@@ -1,11 +1,11 @@
 ;; Filename: kernel.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 04/22/2017 Saturday 23:17:07
+;; Last-Updated: 05/06/2017 Saturday 22:07:30
 ;; Description: Get latest kernel version
 
-(ns gcwl.plugins.kernel
-  (:require [gcwl.parse     :refer [extract-word handleerr admin? push-admin]]
+(ns salmon.plugins.kernel
+  (:require [salmon.parse     :refer [extract-word handleerr admin? push-admin]]
             [clojure.string :as string]
             [net.cgrand.enlive-html :as html]))
 

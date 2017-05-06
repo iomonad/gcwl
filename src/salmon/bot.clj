@@ -1,13 +1,13 @@
 ;; Filename: bot.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/02/2017 Tuesday 22:03:43
+;; Last-Updated: 05/06/2017 Saturday 22:05:24
 ;; Description: Bot related function
 
-(ns gcwl.bot
+(ns salmon.bot
   (:require [irclj.core     :as irc]
             [irclj.events   :as events]
-            [gcwl.parse     :refer [extract-command]]
+            [salmon.parse     :refer [extract-command]]
             [clojure.string :as string])
   (:gen-class))
 
@@ -60,10 +60,10 @@
 
 (defn start-bot [plugins]
   "Start the bot instance"
-  (let [nick "gcwl"
-        host "irc.rizon.net"
+  (let [nick "salmon"
+        host "irc.freenode.net"
         port 6667
-        channels (-> (str "#rice,#code")
+        channels (-> (str "#bottest,#testing")
                      (.split ",") ; Pass each chan to vec
                      vec)]
     (run-bot plugins

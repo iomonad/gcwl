@@ -1,15 +1,15 @@
 ;; Filename: core.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 04/23/2017 Sunday 12:17:23
+;; Last-Updated: 05/06/2017 Saturday 22:04:27
 ;; Description: Main namespace of the program
 
 
-(ns gcwl.core
+(ns salmon.core
   "Main namespace of the program"
-  (:require [gcwl.config  :as config]
-            [gcwl.bot     :as bot]
-            [gcwl.plugins :as plugins]
+  (:require [salmon.config  :as config]
+            [salmon.bot     :as bot]
+            [salmon.plugins :as plugins]
             )
   (:gen-class))
 

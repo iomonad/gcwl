@@ -1,10 +1,10 @@
 ;; Filename: config.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 04/17/2017 Monday 22:17:22
+;; Last-Updated: 05/06/2017 Saturday 22:04:48
 ;; Description: Configuration namespaces for the bot
 
-(ns gcwl.config
+(ns salmon.config
   (:require [clojure.java.io :as io]
             [cheshire.core :as json]))
 

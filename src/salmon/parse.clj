@@ -2,13 +2,12 @@
 ;; Filename: parse.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 04/22/2017 Saturday 00:04:10
+;; Last-Updated: 05/06/2017 Saturday 22:06:05
 ;; Description: Parsing utils
 
-(ns gcwl.parse)
+(ns salmon.parse)
 
 (def ^:private admin (atom ["iomonad"])) ;; Registred users
-
 (defn push-admin [nick]
   "Add user to admin atom"
   (swap! admin conj nick))

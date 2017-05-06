@@ -1,11 +1,11 @@
 ;; Filename: testauth.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 04/21/2017 Friday 23:18:22
+;; Last-Updated: 05/06/2017 Saturday 22:06:46
 ;; Description:  Check if user is administrator
 
-(ns gcwl.plugins.testauth
-  (:require [gcwl.parse     :refer [extract-word handleerr admin?]]
+(ns salmon.plugins.testauth
+  (:require [salmon.parse     :refer [extract-word handleerr admin?]]
             [clojure.string :as string]))
 
 (defn test-auth [irc message]

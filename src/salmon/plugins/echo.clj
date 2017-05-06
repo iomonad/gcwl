@@ -1,5 +1,5 @@
-(ns gcwl.plugins.echo
-  (:require [gcwl.parse     :refer [extract-word handleerr]]
+(ns salmon.plugins.echo
+  (:require [salmon.parse     :refer [extract-word handleerr]]
             [clojure.string :as string]))
 
 (defn return-echo [irc message]
