@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/PSM_V61_D202_Sacramento_salmon.png/320px-PSM_V61_D202_Sacramento_salmon.png"/><br>
+  <img src="https://raw.githubusercontent.com/iomonad/salmon/master/resources/salmon.png"/><br>
   <b>salmon</b><br>
-    <a href="https://travis-ci.org/iomonad/gcwl" title="Build status">
-     <img src="https://travis-ci.org/iomonad/gcwl.svg?branch=master">
+    <a href="https://travis-ci.org/iomonad/salmon" title="Build status">
+     <img src="https://travis-ci.org/iomonad/salmon.svg?branch=master">
   </a>
-  <a href="https://jarkeeper.com/iomonad/gcwl" title="Dependencies status">
-     <img src="https://jarkeeper.com/iomonad/gcwl/status.svg">
+  <a href="https://jarkeeper.com/iomonad/salmon" title="Dependencies status">
+     <img src="https://jarkeeper.com/iomonad/salmon/status.svg">
   </a><br>  
   <u>Personnal irc bot, written in clojure</u>
   <br><br>
