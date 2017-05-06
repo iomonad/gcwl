@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/PSM_V61_D202_Sacramento_salmon.png/320px-PSM_V61_D202_Sacramento_salmon.png"/><br>
-  <b>gcwl</b><br>
+  <b>salmon</b><br>
     <a href="https://travis-ci.org/iomonad/gcwl" title="Build status">
      <img src="https://travis-ci.org/iomonad/gcwl.svg?branch=master">
   </a>
