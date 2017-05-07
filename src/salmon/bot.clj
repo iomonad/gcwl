@@ -1,13 +1,13 @@
 ;; Filename: bot.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/07/2017 Sunday 11:02:42
+;; Last-Updated: 05/07/2017 Sunday 11:54:11
 ;; Description: Bot related function
 
 (ns salmon.bot
   (:require [irclj.core     :as irc]
             [irclj.events   :as events]
-            [salmon.parse   :refer [extract-command extract-word extract-nick-from-raw]]
+            [salmon.parse   :refer [extract-command extract-word extract-nick-from-raw mongo-callback]]
             [salmon.db      :as db]
             [clojure.string :as string])
   (:gen-class))
@@ -31,7 +31,7 @@
         (println (format "CMD: %s %s" command (str (:text msg))))
         (if-let [handler (choose-handler plugins command)]
           (when-let [responses (handler irc updated-message)]
-            (db/salmon-command-logs (extract-nick-from-raw (:raw msg)) ; Log Command request
+            (db/salmon-command-logs (extract-nick-from-raw (:raw msg)) ; Log correct command request
                                     (str command)
                                     (str (:text msg))
                                     (str (:raw msg)))
@@ -51,7 +51,8 @@
                         :real-name realname
                         :username username
                         :callbacks {:privmsg (server-callback plugins)
-                                    :raw-log irclj.events/stdout-callback}))
+                                    :raw-log (or mongo-callback ; Using fallback callback
+                                                 irclj.events/stdout-callback)}))
   (println (format "[*] Connecting as %s@%s" nick host))
   (when password (irc/identify bot password)) ; Auth if defined
   (dosync

@@ -1,10 +1,11 @@
 ;; Filename: parse.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/07/2017 Sunday 11:25:22
+;; Last-Updated: 05/07/2017 Sunday 19:33:48
 ;; Description: Parsing utils
 
-(ns salmon.parse)
+(ns salmon.parse
+  (:require [salmon.db :as db]))
 
 (def ^:private admin (atom ["iomonad"])) ;; Registred users
 (defn push-admin [nick]
@@ -44,6 +45,11 @@
     (str nick)))
 
 (defn mongo-callback  [_ type s]
-  "Logs buffer activities to mongodb"
-  ;; Todo: Replace server-callback by using mongo callback
-  )
+  "Logs ans store buffer activities to mongodb"  
+  (let [nick (extract-nick-from-raw s)]
+    (if-not (nil? nick)
+      (db/salmon-buffer-logs nick
+                             type
+                             "Some blah blah"
+                             s)
+      (println s))))
