@@ -6,7 +6,12 @@
   (testing "Make sure test suite works"
     (is (= 1 1))))
 
+;; Parsing.clj
 (deftest nick-parsing-test
   (testing "Make sure nick extraction is done"
-    (is (= "iomonadk"
+    (is (= "iomonad"
            (parse/extract-nick-from-raw ":iomonad!~iomonad@wow.such.vhost PRIVMSG #bottest :.ping")))))
+
+(deftest handleerr-test
+  (testing "Test error parsing"
+    (is (= "Error: foo" (parse/handleerr "foo")))))

@@ -1,8 +1,7 @@
-
 ;; Filename: parse.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/07/2017 Sunday 11:01:28
+;; Last-Updated: 05/07/2017 Sunday 11:25:22
 ;; Description: Parsing utils
 
 (ns salmon.parse)
