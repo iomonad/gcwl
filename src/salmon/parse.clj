@@ -2,7 +2,7 @@
 ;; Filename: parse.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/06/2017 Saturday 22:56:11
+;; Last-Updated: 05/07/2017 Sunday 08:55:13
 ;; Description: Parsing utils
 
 (ns salmon.parse)
@@ -38,3 +38,7 @@
   (if-let [[_ word rest-of-text]
            (re-find #"^(\S+)\s*(.*)$" (:text message))]
     [word (assoc message :text rest-of-text)]))
+
+(defn mongo-callback  [_ type s]
+  "Logs buffer activities to mongodb"
+  )

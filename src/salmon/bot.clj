@@ -1,7 +1,7 @@
 ;; Filename: bot.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/06/2017 Saturday 23:25:21
+;; Last-Updated: 05/07/2017 Sunday 08:55:43
 ;; Description: Bot related function
 
 (ns salmon.bot
@@ -38,14 +38,15 @@
         (println (.getMessage e))
         (.printStackTrace e)))))
 
-(defn run-bot [plugins & {:keys [host port nick password channels server-password]}]
+(defn run-bot [plugins & {:keys [host port nick realname username password channels server-password]}]
   "Bot entry point"
   ;; Create local bot instance
   (def bot (irc/connect host port nick
                         :pass server-password
+                        :real-name realname
+                        :username username
                         :callbacks {:privmsg (server-callback plugins)
                                     :raw-log irclj.events/stdout-callback}))
-                                        ;  (list-plugins)
   (println (format "[*] Connecting as %s@%s" nick host))
   (when password (irc/identify bot password)) ; Auth if defined
   (dosync
@@ -54,8 +55,7 @@
           :ssl? true
           :plugins plugins)
    (doseq [c channels]
-     (irc/join bot c)) ; Join each channels
-   ))
+     (irc/join bot c))))
 
 
 (defn start-bot [plugins]
@@ -66,6 +66,10 @@
                  "fake-salmon")
         pass (or (get config :pass)
                  "fake-password")
+        realname (or (get config :realname)
+                     "fake-salmon-name")
+        username (or (get config :username)
+                     "fake-salmon-username")
         host (or (get-in config [:server :host])
                  "irc.freenode.net")
         port (or (get-in config [:server :port])
@@ -76,5 +80,7 @@
              :host host
              :port port
              :nick nick
+             :realname realname
+             :username username
              :password pass
              :channels channels)))

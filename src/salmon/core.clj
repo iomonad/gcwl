@@ -1,7 +1,7 @@
 ;; Filename: core.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;;
-;; Last-Updated: 05/06/2017 Saturday 22:32:34
+;; Last-Updated: 05/07/2017 Sunday 09:17:04
 ;; Description: Main namespace of the program
 
 
@@ -12,5 +12,8 @@
   (:gen-class))
 
 (defn -main []
-  (println "[*] Starting bot")
-  (bot/start-bot @plugins/plugins-enabled))
+  "Start each parts in thread"
+  (->> [(bot/start-bot @plugins/plugins-enabled)
+        (println "Compojure will be implented")]
+       (Thread.)
+       (.start)))
