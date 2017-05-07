@@ -8,5 +8,7 @@
      <img src="https://jarkeeper.com/iomonad/salmon/status.svg">
   </a><br>  
   <u>Personnal irc bot, written in clojure</u>
-  <br><br>
+  <br><br><br>
+  <b>Dependencies</b>
+  <img src="https://raw.githubusercontent.com/iomonad/salmon/master/resources/dependencies.png"/>
 </p>
