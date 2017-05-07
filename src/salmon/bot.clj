@@ -1,13 +1,14 @@
 ;; Filename: bot.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/07/2017 Sunday 08:55:43
+;; Last-Updated: 05/07/2017 Sunday 11:02:42
 ;; Description: Bot related function
 
 (ns salmon.bot
   (:require [irclj.core     :as irc]
             [irclj.events   :as events]
-            [salmon.parse     :refer [extract-command]]
+            [salmon.parse   :refer [extract-command extract-word extract-nick-from-raw]]
+            [salmon.db      :as db]
             [clojure.string :as string])
   (:gen-class))
 
@@ -30,11 +31,15 @@
         (println (format "CMD: %s %s" command (str (:text msg))))
         (if-let [handler (choose-handler plugins command)]
           (when-let [responses (handler irc updated-message)]
+            (db/salmon-command-logs (extract-nick-from-raw (:raw msg)) ; Log Command request
+                                    (str command)
+                                    (str (:text msg))
+                                    (str (:raw msg)))
             (respond-with irc updated-message responses))
           (respond-with irc updated-message
                         (str (format "Command %s not found." (get updated-message :command))))))
       (catch Throwable e
-        (irc/reply irc msg (str "Error" e)) ; Throw error to channel
+        (irc/reply irc msg (str "Error: " e)) ; Throw error to channel
         (println (.getMessage e))
         (.printStackTrace e)))))
 

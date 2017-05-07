@@ -2,7 +2,7 @@
 ;; Filename: parse.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/07/2017 Sunday 08:55:13
+;; Last-Updated: 05/07/2017 Sunday 11:01:28
 ;; Description: Parsing utils
 
 (ns salmon.parse)
@@ -39,6 +39,12 @@
            (re-find #"^(\S+)\s*(.*)$" (:text message))]
     [word (assoc message :text rest-of-text)]))
 
+(defn extract-nick-from-raw [raw]
+  "fExtract nick from raw message"
+  (if-let [[_ _ nick] (re-find #"(.*?):(.*?)!(.*?)" raw)]
+    (str nick)))
+
 (defn mongo-callback  [_ type s]
   "Logs buffer activities to mongodb"
+  ;; Todo: Replace server-callback by using mongo callback
   )
