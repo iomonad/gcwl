@@ -1,13 +1,14 @@
 ;; Filename: bot.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/07/2017 Sunday 11:54:11
+;; Last-Updated: 05/07/2017 Sunday 23:45:10
 ;; Description: Bot related function
 
 (ns salmon.bot
   (:require [irclj.core     :as irc]
             [irclj.events   :as events]
-            [salmon.parse   :refer [extract-command extract-word extract-nick-from-raw mongo-callback]]
+            [salmon.parse   :refer [extract-command extract-word raw->nick
+                                    raw->chan raw->msg mongo-callback]]
             [salmon.db      :as db]
             [clojure.string :as string])
   (:gen-class))
@@ -27,12 +28,12 @@
   "Server callback to analyse and parse raw data"
   (fn [irc msg]
     (try
-      (when-let [[command updated-message] (extract-command msg)]
-        (println (format "CMD: %s %s" command (str (:text msg))))
+      (when-let [[command updated-message] (extract-command msg)]        
         (if-let [handler (choose-handler plugins command)]
           (when-let [responses (handler irc updated-message)]
-            (db/salmon-command-logs (extract-nick-from-raw (:raw msg)) ; Log correct command request
+            (db/salmon-command-logs (raw->nick (:raw msg)) ; Log correct command request
                                     (str command)
+                                    (raw->chan (:raw msg))
                                     (str (:text msg))
                                     (str (:raw msg)))
             (respond-with irc updated-message responses))
