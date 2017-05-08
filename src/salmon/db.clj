@@ -1,7 +1,7 @@
 ;; Filename: db.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/08/2017 Monday 09:44:26
+;; Last-Updated: 05/08/2017 Monday 09:53:31
 ;; Description: Database related functions
 
 (ns salmon.db
@@ -12,14 +12,17 @@
 
 (def ^:private config (read-string (slurp "resources/config.clj")))
 
-(def ^:dynamic *conn* (mg/connect{:host (get-in config [:mongo :host])
-                                  :port (get-in config [:mongo :port])}))
-(def ^:dynamic *db* (mg/get-db *conn* (get-in config [:mongo :db])))
-
+(def ^:dynamic *conn* (mg/connect{:host (or (get-in config [:mongo :host])
+                                            "127.0.0.1")
+                                  :port (or (get-in config [:mongo :port])
+                                            "27017")}))
+(def ^:dynamic *db* (mg/get-db *conn* (or (get-in config [:mongo :db])
+                                          "salmon")))
 (defn salmon-buffer-logs [nick type chan message raw]
   "Insert raw irc logs to mongodb"
   (let [date  (.toString (java.util.Date.))
-        coll  (get-in config [:mongo :collections :buffer])]
+        coll  (or (get-in config [:mongo :collections :buffer])
+                  "buffer")]
     (mc/insert *db* coll {:nick nick
                           :type type
                           :channel chan
@@ -30,7 +33,8 @@
 (defn salmon-command-logs [nick command chan message raw]
   "Insert command request irc logs to mongodb"
   (let [date  (.toString (java.util.Date.))
-        coll  (get-in config [:mongo :collections :command])]
+        coll  (or (get-in config [:mongo :collections :command])
+                  "cmd")]
     (mc/insert *db* "coll" {:nick nick
                             :date date
                             :channel chan
