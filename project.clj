@@ -22,4 +22,10 @@
              :uberjar {:aot [salmon.core]
                        :jar-name "salmon.jar"
                        :uberjar-name "salmon-standalone.jar"
-                       :uberjar-exclusions [#"META-INF/DUMMY.SF"]}})
+                       :uberjar-exclusions [#"META-INF/DUMMY.SF"]}
+             :graph {:hiera {:path "resources/ns-hierarchy.png"
+                             :vertical true
+                             :show-external true
+                             :cluster-depth 1
+                             :trim-ns-prefix true
+                             :ignore-ns #{}}}})
