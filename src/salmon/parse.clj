@@ -1,7 +1,7 @@
 ;; Filename: parse.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/07/2017 Sunday 23:40:02
+;; Last-Updated: 05/08/2017 Monday 09:32:43
 ;; Description: Parsing utils
 
 (ns salmon.parse
@@ -57,15 +57,23 @@
         msg (str/join " " (nthnext rmsg 3))]
     (str (str/trim (str/replace-first (str msg) #":" "")))))
 
+(defn raw->args [raw]
+  "Parse argument from raw message
+   and return vec of arg, usable with nth"
+  (if-let [chunk (str/lower-case (raw->msg raw))]
+    (str/split chunk #" ")))
+
 (defn mongo-callback  [_ type s]
   "Logs ans store buffer activities to mongodb"  
   (let [nick (raw->nick s)
         chan (raw->chan s)
         msg  (raw->msg  s)]
-    (if-not (nil? nick)
-      (db/salmon-buffer-logs nick ; User nick
-                             type ; In or Out
-                             chan ; Message channel
-                             msg  ; Message
-                             s) ; Raw structure
-      )))
+    (if-not (nil? nick) ; Don't care about server reply
+      (if-not (str/blank? chan) ; Don't care about server query
+        (if-not (str/blank? msg) ; Avoid JOIN and PART
+          (db/salmon-buffer-logs nick ; User nick
+                                 type ; In or Out
+                                 chan ; Message channel
+                                 msg  ; Message
+                                 s) ; Raw structure
+          )))))

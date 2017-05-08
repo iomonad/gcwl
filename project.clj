@@ -9,10 +9,17 @@
                  [enlive "1.1.6"]
                  [com.novemberain/monger "3.1.0"]
                  [http-kit "2.2.0"]]
-  :plugins [[lein-cloverage "1.0.9"]]
+  :scm {:name "git"
+        :url  "https://github.com/iomonad/salmon"}
+  :plugins [[lein-cloverage "1.0.9"]
+            [lein-shell "0.5.0"]]
   :main ^:skip-aot salmon.core
   :aliases {"graphdeps" ["vizdeps" "-o" "resources/dependencies.png"]}
-  :profiles {:uberjar {:aot [salmon.core]
+  :profiles {:coveralls {:aliases {"coveralls" ["do" "cloverage" "--coveralls,"
+                                                "shell" "curl" "-F"
+                                                "json_file=@target/coverage/coveralls.json"
+                                                "https://coveralls.io/api/v1/jobs"]}}
+             :uberjar {:aot [salmon.core]
                        :jar-name "salmon.jar"
                        :uberjar-name "salmon-standalone.jar"
                        :uberjar-exclusions [#"META-INF/DUMMY.SF"]}})
