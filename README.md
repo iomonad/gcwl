@@ -11,4 +11,7 @@
   <br><br><br>
   <b>Dependencies</b>
   <img src="https://raw.githubusercontent.com/iomonad/salmon/master/resources/dependencies.png"/>
+  <br><br><br>
+  <b>Namespace Hierarchy</b>
+  <img src="https://raw.githubusercontent.com/iomonad/salmon/master/resources/ns-hierarchy.png"/>
 </p>
