@@ -1,7 +1,7 @@
 ;; Filename: db.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/08/2017 Monday 09:53:31
+;; Last-Updated: 05/08/2017 Monday 09:56:23
 ;; Description: Database related functions
 
 (ns salmon.db
@@ -10,7 +10,7 @@
   (:import org.bson.types.ObjectId))
 
 
-(def ^:private config (read-string (slurp "resources/config.clj")))
+(def ^:private config (read-string (slurp "resources/config.example.clj")))
 
 (def ^:dynamic *conn* (mg/connect{:host (or (get-in config [:mongo :host])
                                             "127.0.0.1")
