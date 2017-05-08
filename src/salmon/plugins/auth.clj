@@ -1,7 +1,7 @@
 ;; Filename: auth.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/06/2017 Saturday 23:01:17
+;; Last-Updated: 05/08/2017 Monday 10:57:40
 ;; Description: Auth user to admin atom
 
 (ns salmon.plugins.auth
@@ -22,4 +22,6 @@
            (catch Exception e
              (handleerr e))))))
 
-(def plugin {:commands { "auth" fn-auth}})
+(def plugin {:name "auth"
+             :desc "Add you in the administrator atom"
+             :commands {"auth" fn-auth}})

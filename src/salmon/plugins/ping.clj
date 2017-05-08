@@ -1,4 +1,5 @@
-(ns salmon.plugins.ping
-  "Sends a PING back given .pong")
+(ns salmon.plugins.ping)
 
-(def plugin {:commands {"ping" (fn [irc message] "pong")}})
+(def plugin {:name "ping"
+             :desc "Respond to ping request"
+             :commands {"ping" (fn [irc message] "pong")}})
