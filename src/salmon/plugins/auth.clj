@@ -1,7 +1,7 @@
 ;; Filename: auth.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/08/2017 Monday 10:57:40
+;; Last-Updated: 05/09/2017 Tuesday 09:30:47
 ;; Description: Auth user to admin atom
 
 (ns salmon.plugins.auth
