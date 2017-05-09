@@ -1,7 +1,7 @@
 ;; Filename: bot.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/09/2017 Tuesday 18:52:17
+;; Last-Updated: 05/09/2017 Tuesday 21:36:46
 ;; Description: Bot related function
 
 (ns salmon.bot
@@ -38,7 +38,7 @@
                                     (str (:raw msg)))
             (respond-with irc updated-message responses))
           (respond-with irc updated-message
-                        (str (format "Command %s not found." (get updated-message :command))))))
+                        (str (format "Command `%s` not found." (get updated-message :command))))))
       (catch Throwable e
         (irc/reply irc msg (str "Error: " e)) ; Throw error to channel
         (println (.getMessage e))

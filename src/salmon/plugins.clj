@@ -1,7 +1,7 @@
 ;; Filename: plugins.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/09/2017 Tuesday 19:32:05
+;; Last-Updated: 05/09/2017 Tuesday 19:35:28
 ;; Description: Plugins dsl to build commands
 
 (ns salmon.plugins
@@ -16,7 +16,6 @@
 ;; Atom that contains enables plugins
 (def plugins-enabled (atom [ping/plugin
                             date/plugin
-                            auth/plugin
                             about/plugin
                             man/plugin
                             help/plugin]))
