@@ -1,7 +1,7 @@
 ;; Filename: parse.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/08/2017 Monday 09:32:43
+;; Last-Updated: 05/09/2017 Tuesday 18:54:41
 ;; Description: Parsing utils
 
 (ns salmon.parse
@@ -31,9 +31,10 @@
 (defn extract-command [message]
   "Extract command from raw message"
   (if-let [[_ cmd rest-of-text]
-           (re-find #"^[.](\S+)\s*(.*)$" (:text message))]
+           (re-find #"^[%](\S+)\s*(.*)$" (:text message))]
     [cmd (assoc message :text rest-of-text
                 :command cmd)]))
+
 (defn extract-word [message]
   "Extract arguments from raw message"
   (if-let [[_ word rest-of-text]

@@ -1,7 +1,7 @@
 ;; Filename: bot.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/07/2017 Sunday 23:45:10
+;; Last-Updated: 05/09/2017 Tuesday 18:52:17
 ;; Description: Bot related function
 
 (ns salmon.bot
@@ -51,7 +51,7 @@
                         :pass server-password
                         :real-name realname
                         :username username
-                        :callbacks {:privmsg (server-callback plugins)
+                        :callbacks {:privmsg (server-callback plugins)                                    
                                     :raw-log (or mongo-callback ; Using fallback callback
                                                  irclj.events/stdout-callback)}))
   (println (format "[*] Connecting as %s@%s" nick host))
