@@ -7,5 +7,5 @@
          (catch Exception e
            (handleerr e)))))
 (def plugin {:name "date"
-             :desc "Show the current date"
+             :desc {"date" "Show the current date"}
              :commands {"date" return-date}})
