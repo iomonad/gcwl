@@ -1,7 +1,7 @@
 ;; Filename: man.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/09/2017 Tuesday 22:34:35
+;; Last-Updated: 05/10/2017 Wednesday 19:29:37
 ;; Description: 
 
 (ns salmon.plugins.man
@@ -18,7 +18,6 @@
                ))
       (str "What manual page do you want? Please use help command."
            ))))
-
 
 (def plugin {:name "man"
              :desc "Show command documention"
