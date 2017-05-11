@@ -8,7 +8,8 @@
                  [cheshire "5.7.1"]
                  [enlive "1.1.6"]
                  [com.novemberain/monger "3.1.0"]
-                 [http-kit "2.2.0"]]
+                 [http-kit "2.2.0"]
+                 [enlive "1.1.6"]]
   :scm {:name "git"
         :url  "https://github.com/iomonad/salmon"}
   :plugins [[lein-cloverage "1.0.9"]
