@@ -1,4 +1,4 @@
-FROM clojure
+FROM nblumoe/rpi-clojure
 MAINTAINER Clement Trösa <iomonad@riseup.net>
 
 RUN mkdir -p /usr/src/app
