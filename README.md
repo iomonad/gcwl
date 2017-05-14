@@ -4,6 +4,9 @@
     <a href="https://travis-ci.org/iomonad/salmon" title="Build status">
      <img src="https://travis-ci.org/iomonad/salmon.svg?branch=master">
   </a>
+  <a href='https://coveralls.io/github/iomonad/salmon?branch=master'>
+      <img src='https://coveralls.io/repos/github/iomonad/salmon/badge.svg?branch=master' alt='Coverage Status' />
+  </a>
   <a href="https://jarkeeper.com/iomonad/salmon" title="Dependencies status">
      <img src="https://jarkeeper.com/iomonad/salmon/status.svg">
   </a><br>  
