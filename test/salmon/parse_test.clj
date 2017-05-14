@@ -26,23 +26,10 @@
   (testing "Make sure arguments are parsed"
     (is (= [".image" "--set" "foo.png"]
            (parse/raw->args command-chunk)))))
-
-(deftest handleerr-test
-  (testing "Check if the error response works"
-    (is (= "Error: foo"
-           (parse/handleerr "foo")))))
-(deftest argerr-test
-  (testing "Check if the arg error response works"
-    (is (= "Error: foo arguments(s) requiered."
-           (parse/argerr "foo")))))
-
 (deftest extract-command-test
   (testing "Check if the command is properly extracted"
-    (is (= "foo")
-        
-        )))
+    ))
 
 (deftest extract-word-test
   (testing "Check if the word is properly extracted"
-    (is (= "foo")
-        )))
+    ))
