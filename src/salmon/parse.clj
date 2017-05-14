@@ -1,23 +1,17 @@
-;; Filename: parse.clj
-;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
-;; 
-;; Last-Updated: 05/09/2017 Tuesday 18:54:41
-;; Description: Parsing utils
-
 (ns salmon.parse
   (:require [salmon.db :as db]
             [clojure.string :as str]))
 
 ;; Admin related
 (def ^:private admin (atom ["iomonad"])) ;; Registred users
+
 (defn push-admin [nick]
   "Add user to admin atom"
-  (swap! admin conj nick))
+  (swap! admin conj (str nick)))
+
 (defn admin? [nick]
   "Predicate to check if user is administrator"
-  (if (.contains @admin)
-    (true)
-    (false)))
+  (.contains @admin nick))
 
 ;; Error helper
 (defn handleerr [error]
