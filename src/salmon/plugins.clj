@@ -1,13 +1,12 @@
 ;; Filename: plugins.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/11/2017 Thursday 21:40:25
+;; Last-Updated: 05/14/2017 Sunday 11:51:41
 ;; Description: Plugins dsl to build commands
 
 (ns salmon.plugins
   (:require [salmon.plugins.ping :as ping]
             [salmon.plugins.date :as date]
-            [salmon.plugins.auth :as auth]
             [salmon.plugins.man :as man]
             [salmon.plugins.urban :as urban]
             [salmon.plugins.manage :as manage]
