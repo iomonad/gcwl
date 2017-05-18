@@ -1,7 +1,7 @@
 ;; Filename: plugins.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/14/2017 Sunday 11:51:41
+;; Last-Updated: 05/18/2017 Thursday 21:29:17
 ;; Description: Plugins dsl to build commands
 
 (ns salmon.plugins
@@ -20,8 +20,3 @@
                             urban/plugin
                             manage/plugin
                             help/plugin]))
-
-(defn list-plugins []
-  "List enabled plugins to *out*"
-  (doseq [p @plugins-enabled]
-    (println (format "[*] Enabled plugin: %s" p))))

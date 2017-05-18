@@ -1,7 +1,7 @@
 ;; Filename: man.clj
 ;; Copyright (c) 2008-2017 Clement Trösa <iomonad@riseup.net>
 ;; 
-;; Last-Updated: 05/10/2017 Wednesday 22:27:31
+;; Last-Updated: 05/18/2017 Thursday 21:36:44
 ;; Description: 
 
 (ns salmon.plugins.man

@@ -3,9 +3,8 @@
 
 (defn return-date [irc message]
   (let [date (new java.util.Date)]
-    (try (format "Current date: %s" date)
-         (catch Exception e
-           (handleerr e)))))
+    (format "Current date: %s" date)))
+
 (def plugin {:name "date"
              :desc {"date" "Show the current date"}
              :commands {"date" return-date}})
