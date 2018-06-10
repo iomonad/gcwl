@@ -3,16 +3,16 @@
   :url "https://github.com/iomonad/salmon"
   :license {:name "Do What the Fuck You Want to Public License"
             :url "http://www.wtfpl.net/"}
-  :dependencies [[org.clojure/clojure "1.8.0"]
+  :dependencies [[org.clojure/clojure "1.9.0"]
                  [irclj "0.5.0-alpha4"]
-                 [cheshire "5.7.1"]
+                 [cheshire "5.8.0"]
                  [enlive "1.1.6"]
                  [com.novemberain/monger "3.1.0"]
-                 [http-kit "2.2.0"]
+                 [http-kit "2.3.0"]
                  [enlive "1.1.6"]]
   :scm {:name "git"
         :url  "https://github.com/iomonad/salmon"}
-  :plugins [[lein-cloverage "1.0.9"]
+  :plugins [[lein-cloverage "1.0.10"]
             [lein-shell "0.5.0"]]
   :main ^:skip-aot salmon.core
   :aliases {"graphdeps" ["vizdeps" "-o" "resources/dependencies.png"]}
